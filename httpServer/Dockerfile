@@ -1,10 +1,10 @@
 FROM alpine
-ENV VERSION=1.0
-ADD ./bin/httpserver /httpserver
+MAINTAINER GengDongzhe "ratherout@163.com"
+ENV VERSION="g1.0"
 LABEL multi.mylabel="homework from gengdongzhe"
-COPY ./bin/httpserver main.go
-RUN go build -o /bin/httpserver
+COPY . .
+RUN go build -o httpserver main.go
 
 FROM scratch
-COPY --from=build /bin/httpserver /bin/httpserver
-ENTRYPOINT ["/httpserver"]
+COPY --from=builder ./httpserver ./httpserver
+ENTRYPOINT ["./httpserver"]
