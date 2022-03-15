@@ -1,4 +1,4 @@
-FROM alpine
+FROM golang:1.17 AS builder
 MAINTAINER GengDongzhe "ratherout@163.com"
 ENV VERSION="g1.0"
 LABEL multi.mylabel="homework from gengdongzhe"
